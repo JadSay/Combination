@@ -26,12 +26,20 @@ class Combination {
     start & end ---> Staring and Ending indexes in arr[]
     index  ---> Current index in data[]
     r ---> Size of a combination to be printed 
-    
+    write --> check if he wants to write results in file 
+    print --> check if he wants to print results
+    bw -> bufferedwrited of file where the results should be written
+    count -> return of how total numbers of combinations
     */
     static int combinationUtil(int arr[], int data[], int start,
             int end, int index, int r, boolean write, boolean print, BufferedWriter bw, int count) {
         // Current combination is ready to be printed, print it
         if (index == r) {
+            // When i add this function to filter out arrays with consecutive numbers
+            // it throws an OutOfIndexError 
+            // I've tried this function on multiple arrays of ints of 6 numbers in the main
+            // below and worked fine 
+            // the code of combinationUtil also works fine if i comment out this function
             if (consecutive(data, 1)) {
                 for (int j = 0; j < r; j++) {
                     if (write) {
